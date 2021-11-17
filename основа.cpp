@@ -18,12 +18,12 @@ int main ()
 void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize)
     {
     /*
-    Параметры:
-    x, y - координаты
-    size - размер фигуры
-    widthLine - толщина линий
-    nLine - толщина ножки
-    roundSize - размер шишек
+    РџР°СЂР°РјРµС‚СЂС‹:
+    x, y - РєРѕРѕСЂРґРёРЅР°С‚С‹
+    size - СЂР°Р·РјРµСЂ С„РёРіСѓСЂС‹
+    widthLine - С‚РѕР»С‰РёРЅР° Р»РёРЅРёР№
+    nLine - С‚РѕР»С‰РёРЅР° РЅРѕР¶РєРё
+    roundSize - СЂР°Р·РјРµСЂ С€РёС€РµРє
     */
     txSetColor (RGB(155, 110, 65), nLine);
     txLine     (x, y + 40*size, x, y + 70*size);
@@ -42,12 +42,12 @@ void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize)
 void tree2 (int x, int y, int size, int nLine, int place, int roundSize)
     {
     /*
-    Параметры:
-    x, y - координаты
-    size - размер фигуры
-    nLine - толщина ножки
-    place - положение верхнего яблока
-    roundSize - размер яблок
+    РџР°СЂР°РјРµС‚СЂС‹:
+    x, y - РєРѕРѕСЂРґРёРЅР°С‚С‹
+    size - СЂР°Р·РјРµСЂ С„РёРіСѓСЂС‹
+    nLine - С‚РѕР»С‰РёРЅР° РЅРѕР¶РєРё
+    place - РїРѕР»РѕР¶РµРЅРёРµ РІРµСЂС…РЅРµРіРѕ СЏР±Р»РѕРєР°
+    roundSize - СЂР°Р·РјРµСЂ СЏР±Р»РѕРє
 
     txSetColor     (RGB(30, 200, 37), 0);
     txSetFillColor (RGB(30, 200, 37));
@@ -70,12 +70,12 @@ void tree2 (int x, int y, int size, int nLine, int place, int roundSize)
 void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
 {
     /*
-    Параметры:
-    x, y - координаты
-    size - размер фигуры
-    widthLine - толщина линий
-    nose - наклон носа
-    back - наклон иголок
+    РџР°СЂР°РјРµС‚СЂС‹:
+    x, y - Д™Г®Г®Д‘Г¤ДЌГ­Е•Е€Е±
+    size - Д‘Е•Г§Д›ДєД‘ ГґДЌДѓГіД‘Е±
+    widthLine - Е€Г®Г«ЕЇДЌГ­Е• Г«ДЌГ­ДЌГ©
+    nose - Г­Е•Д™Г«Г®Г­ Г­Г®Е„Е•
+    back - Г­Е•Д™Г«Г®Г­ ДЌДѓГ®Г«Г®Д™
 
     txSetFillColor (RGB(200, 100, 26), widthLine);
     POINT body [6] {{x,           y + nose},    {x + 20*size, y - 10*size},
@@ -98,12 +98,12 @@ void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
 void apple (int x, int y, int size, int lSize, int widthLine, int shine)
 {
     /*
-    Параметры:
-    x, y - координаты
-    size - размер фигуры
-    lSize - размер листа
-    widthLine - толщина линий
-    shine - положение облеска
+    ДЋЕ•Д‘Е•Д›ДєЕ€Д‘Е±:
+    x, y - Д™Г®Г®Д‘Г¤ДЌГ­Е•Е€Е±
+    size - Д‘Е•Г§Д›ДєД‘ ГґДЌДѓГіД‘Е±
+    lSize - Д‘Е•Г§Д›ДєД‘ Г«ДЌЕ„Е€Е•
+    widthLine - Е€Г®Г«ЕЇДЌГ­Е• Г«ДЌГ­ДЌГ©
+    shine - ДЏГ®Г«Г®Д‡ДєГ­ДЌДє Г®ГЎГ«ДєЕ„Д™Е•
 
     txSetColor     (RGB(252, 14, 42), widthLine);
     txSetFillColor (252, 14, 42);
