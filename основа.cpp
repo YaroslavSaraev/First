@@ -1,7 +1,7 @@
 # include "TXLib.h"
 
 void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize);
-//void tree2 (int x, int y, int size, int nLine, int place, int roundSize);
+void tree2 (int x, int y, int size, int nLine, int place, int roundSize);
 
 int main ()
     {
@@ -10,8 +10,21 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    //tree1 (100, 500, 1, 2, 5, 15)
-
+    int nose = 0;
+    for (int z = 0; z <= 10; z++)
+        {
+        if (z % 2 == 0)
+            {
+            hedgerog (5, 200, 1, 1, 10, 0);
+            }
+        else
+            {
+            hedgerog (5, 200, 1, 1, 0, 0);
+            }
+        txSleep (200);
+        txSetFillColor (TX_WHITE);
+        txClear;
+        }
     return 0;
     }
 //--------------------------------------------------------------------------
@@ -25,13 +38,24 @@ void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize)
     nLine - толщина ножки
     roundSize - размер шишек
     */
+    txSetFillColor (RGB(90, 194, 65), widthLine);
+    POINT branches_1 [7] {{x - 30*size, y}, {x,           y - 40*size},
+                          {x + 30*size, y}, {x + 15*size, y - 10*size},
+                          {x,           y}, {x - 15*size, y - 10*size}
+                          {x - 30*size, y}};
+    txPolygon             (branches_1, 7);
+    
+    txSetFillColor (RGB(90, 194, 65), widthLine);
+    POINT branches_2[7] {{x - 30*size, y + 40*size}, {x,           y},
+                         {x + 30*size, y + 40*size}, {x + 15*size, y + 30*size},
+                         {x,           y + 40*size}, {x - 15*size, y + 30*size}
+                         {x - 30*size, y + 40*size}};
+    txPolygon            (branches_2, 7);
+    
+    
     txSetColor (RGB(155, 110, 65), nLine);
     txLine     (x, y + 40*size, x, y + 70*size);
-
-    needle (x, y      , 3, 150, 25, 200, RGB(25, 35, 120), RGB(0,  80, 0));
-    needle (x, y -  90, 3, 150, 25, 200, RGB(25, 35, 120), RGB(0, 156, 0));
-    needle (x, y - 180, 3, 100, 25, 150, RGB(25, 35, 120), RGB(0, 255, 0));
-
+    
     txSetFillColor (RGB(98, 0, 0));
     txSetColor     (RGB(98, 0, 0));
     txCircle (x -  5*size, y -  5*size, roundSize);
@@ -71,11 +95,11 @@ void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
 {
     /*
     Параметры:
-    x, y - ęîîđäčíŕňű
-    size - đŕçěĺđ ôčăóđű
-    widthLine - ňîëůčíŕ ëčíčé
-    nose - íŕęëîí íîńŕ
-    back - íŕęëîí čăîëîę
+    x, y - координаты
+    size - размер фигуры
+    widthLine -толщина линий
+    nose - наклон носа
+    back - наклон иголок
 
     txSetFillColor (RGB(200, 100, 26), widthLine);
     POINT body [6] {{x,           y + nose},    {x + 20*size, y - 10*size},
@@ -98,12 +122,12 @@ void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
 void apple (int x, int y, int size, int lSize, int widthLine, int shine)
 {
     /*
-    Ďŕđŕěĺňđű:
-    x, y - ęîîđäčíŕňű
-    size - đŕçěĺđ ôčăóđű
-    lSize - đŕçěĺđ ëčńňŕ
-    widthLine - ňîëůčíŕ ëčíčé
-    shine - ďîëîćĺíčĺ îáëĺńęŕ
+   Параметры
+    x, y - координаты
+    size - размер фигуры
+    lSize - размер листа
+    widthLine - толщина линий
+    shine - положение отблеска
 
     txSetColor     (RGB(252, 14, 42), widthLine);
     txSetFillColor (252, 14, 42);
