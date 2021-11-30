@@ -1,7 +1,9 @@
 # include "TXLib.h"
 
-void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize);
-void tree2 (int x, int y, int size, int nLine, int place, int roundSize);
+void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize1);
+void tree2 (int x, int y, int size, int nLine, int place, int roundSize2);
+void hedgerog (int x, int y, int size, int widthLine, int nose, int back);
+void apple (int x, int y, int size, int lSize, int widthLine, int shine);
 
 int main ()
     {
@@ -10,16 +12,20 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    int nose = 0;
+    
     for (int z = 0; z <= 10; z++)
         {
         if (z % 2 == 0)
             {
             hedgerog (5, 200, 1, 1, 10, 0);
+            tree1    (100, 500, 2, 2, 10);
+            apple    (100, 300, 2, 0, 2, 9)
             }
         else
             {
             hedgerog (5, 200, 1, 1, 0, 0);
+            tree1    (100, 500, 2, 2, 15);
+            apple    (100, 300, 2, 0, 2, -9)
             }
         txSleep (200);
         txSetFillColor (TX_WHITE);
@@ -28,7 +34,7 @@ int main ()
     return 0;
     }
 //--------------------------------------------------------------------------
-void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize)
+void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize1)
     {
     /*
     Параметры:
@@ -58,12 +64,12 @@ void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize)
     
     txSetFillColor (RGB(98, 0, 0));
     txSetColor     (RGB(98, 0, 0));
-    txCircle (x -  5*size, y -  5*size, roundSize);
-    txCircle (x +  5*size, y + 35*size, roundSize);
-    txCircle (x + 14*size, y - 20*size, roundSize);
+    txCircle (x -  5*size, y -  5*size, roundSize1);
+    txCircle (x +  5*size, y + 35*size, roundSize1);
+    txCircle (x + 14*size, y - 20*size, roundSize1);
     }
-/*/--------------------------------------------------------------------------
-void tree2 (int x, int y, int size, int nLine, int place, int roundSize)
+//--------------------------------------------------------------------------
+void tree2 (int x, int y, int size, int nLine, int place, int roundSize2)
     {
     /*
     Параметры:
@@ -72,6 +78,7 @@ void tree2 (int x, int y, int size, int nLine, int place, int roundSize)
     nLine - толщина ножки
     place - положение верхнего яблока
     roundSize - размер яблок
+    */
 
     txSetColor     (RGB(30, 200, 37), 0);
     txSetFillColor (RGB(30, 200, 37));
@@ -83,9 +90,9 @@ void tree2 (int x, int y, int size, int nLine, int place, int roundSize)
     txCircle (x + 30*size, y - 60*size, 10*size);
 
     txSetFillColor (RGB(252, 14, 42));
-    txCircle (x - 30*size,          y,           roundSize);
-    txCircle (x + 10*size + place , y - 60*size, roundSize);
-    txCircle (x + 10*size,          y + 10*size, roundSize);
+    txCircle (x - 30*size,          y,           roundSize2);
+    txCircle (x + 10*size + place , y - 60*size, roundSize2);
+    txCircle (x + 10*size,          y + 10*size, roundSize2);
 
     txSetColor (RGB(155, 110, 65), nLine);
     txLine (x, y + 45*size, x, y + 75*size);
@@ -100,6 +107,7 @@ void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
     widthLine -толщина линий
     nose - наклон носа
     back - наклон иголок
+    */
 
     txSetFillColor (RGB(200, 100, 26), widthLine);
     POINT body [6] {{x,           y + nose},    {x + 20*size, y - 10*size},
@@ -122,12 +130,13 @@ void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
 void apple (int x, int y, int size, int lSize, int widthLine, int shine)
 {
     /*
-   Параметры
+    Параметры
     x, y - координаты
     size - размер фигуры
     lSize - размер листа
     widthLine - толщина линий
     shine - положение отблеска
+    */
 
     txSetColor     (RGB(252, 14, 42), widthLine);
     txSetFillColor (252, 14, 42);
@@ -150,3 +159,9 @@ void apple (int x, int y, int size, int lSize, int widthLine, int shine)
     txSetFillColor (RGB(237, 238, 200));
     txCircle (x + shine, y - 5*size, 3*size);
 }
+/*
+tree1    (100, 500, 2, 2, 5, 15)
+tree2    (200, 100, 1, 8, -5, 10)
+hedgerog (5, 200, 2, 1, 0, 5)
+apple    (100, 300, 2, 0, 2, 9)
+*/
