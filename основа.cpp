@@ -13,19 +13,19 @@ int main ()
     txRectangle (0, 0, 1000, 600);
 
     
-    for (int z = 0; z <= 10; z++)
+    for (int z = 1; z <= 10; z++)
         {
         if (z % 2 == 0)
             {
             hedgerog (5, 200, 1, 1, 10, 0);
             tree1    (100, 500, 2, 2, 10);
-            apple    (100, 300, 2, 0, 2, 9)
+            apple    (100, 300, 2, 0, 2, 9);
             }
         else
             {
             hedgerog (5, 200, 1, 1, 0, 0);
             tree1    (100, 500, 2, 2, 15);
-            apple    (100, 300, 2, 0, 2, -9)
+            apple    (100, 300, 2, 0, 2, -9);
             }
         txSleep (200);
         txSetFillColor (TX_WHITE);
