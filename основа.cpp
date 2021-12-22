@@ -1,9 +1,10 @@
 # include "TXLib.h"
 
-void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize1);
-void tree2 (int x, int y, int size, int nLine, int place, int roundSize2);
+void tree1    (int x, int y, int size, int widthLine, int nLine, int roundSize1);
+void tree2    (int x, int y, int size, int nLine, int place, int roundSize2);
 void hedgerog (int x, int y, int size, int widthLine, int nose, int back);
-void apple (int x, int y, int size, int lSize, int nLine, int shine);
+void apple    (int x, int y, int size, int lSize, int nLine, int shine);
+void house    (int x, int y, int size) ;
 
 int main ()
     {
@@ -12,39 +13,26 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-
+//Сцена 1
     for (int z = 1; z <= 15; z++)
         {
-        if (z % 2 == 0)
-            {
-            hedgerog (5, 200, 1, 1, 10, 0);
-            tree1    (300, 300, 2, 2, 10, 8);
-            tree1    (450, 100, 2, 2, 10, 8);
-            tree1    (750, 130, 2, 2, 10, 8);
-            apple    (100, 300, 2, 0, 3, 9);
-            tree2    (200, 150, 1, 8, -5, 10);
-            tree2    (600, 200, 1, 8, -5, 10);
-            tree2    (550, 400, 1, 8, -5, 10);
-            tree2    (900, 450, 1, 8, -5, 10);
-            tree2    (100, 450, 1, 8, -5, 10);
-            }
-        else
-            {
-            hedgerog (5, 200, 1, 1, 0, 0);
-            tree1    (300, 300, 2, 2, 10, 11);
-            tree1    (450, 100, 2, 2, 10, 11);
-            tree1    (750, 130, 2, 2, 10, 11);
-            apple    (100, 300, 2, 0, 3, -9);
-            tree2    (200, 150, 1, 8, 5, 10);
-            tree2    (600, 200, 1, 8, 5, 10);
-            tree2    (550, 400, 1, 8, 5, 10);
-            tree2    (900, 450, 1, 8, 5, 10);
-            tree2    (100, 450, 1, 8, 5, 10);
-            }
+        tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (550, 400, 1, 8, -5 * (z % 2), 10);
+        tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (800, 450, 2);
+
+
         txSleep (500);
         txSetFillColor (TX_WHITE);
         txClear();
         }
+
     return 0;
     }
 //--------------------------------------------------------------------------
@@ -79,9 +67,9 @@ void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize1)
 
     txSetFillColor (RGB(98, 0, 0));
     txSetColor     (RGB(98, 0, 0));
-    txCircle (x -  5*size, y -  5*size, roundSize1);
-    txCircle (x +  5*size, y + 35*size, roundSize1);
-    txCircle (x + 14*size, y - 20*size, roundSize1);
+    txCircle (x -  5*size, y -  5*size, 8 + roundSize1);
+    txCircle (x +  5*size, y + 35*size, 8 + roundSize1);
+    txCircle (x + 14*size, y - 20*size, 8 + roundSize1);
     }
 //--------------------------------------------------------------------------
 void tree2 (int x, int y, int size, int nLine, int place, int roundSize2)
@@ -178,6 +166,13 @@ void apple (int x, int y, int size, int lSize, int nLine, int shine)
     txSetColor     (RGB(237, 238, 200));
     txSetFillColor (RGB(237, 238, 200));
     txCircle (x + shine, y - 5*size, 3*size);
+}
+void house (int x, int y, int size)
+{
+    txSetColor     (RGB(140, 0, 0));
+    txSetFillColor (RGB(140, 0, 0));
+    POINT Box [2] {{x, y}, {x, y - 30*size}};
+    txPolygon (Box, 2);
 }
 /*
 tree1    (100, 500, 2, 2, 5, 15)
