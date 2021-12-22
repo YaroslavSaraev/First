@@ -25,8 +25,10 @@ int main ()
         tree2 (550, 400, 1, 8, -5 * (z % 2), 10);
         tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
 
-        house (800, 450, 2);
+        house (750, 450, 3);
 
+        txSetTextAlign (TA_CENTER);
+        txTextOut      (500, 550, "В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
 
         txSleep (500);
         txSetFillColor (TX_WHITE);
@@ -171,8 +173,23 @@ void house (int x, int y, int size)
 {
     txSetColor     (RGB(140, 0, 0));
     txSetFillColor (RGB(140, 0, 0));
-    POINT Box [2] {{x, y}, {x, y - 30*size}};
-    txPolygon (Box, 2);
+    POINT Box [5] {{x,           y},           {x,           y - 40*size},
+                   {x + 40*size, y - 40*size}, {x + 40*size, y          },
+                   {x,           y}};
+    txPolygon (Box, 5);
+
+    txSetColor     (RGB(192, 192, 192));
+    txSetFillColor (RGB(192, 192, 192));
+    POINT Window [5] {{x + 10*size, y - 15*size}, {x + 10*size, y - 30*size},
+                      {x + 30*size, y - 30*size}, {x + 30*size, y - 15*size},
+                      {x + 10*size, y - 15*size}};
+    txPolygon (Window, 5);
+
+    txSetColor     (RGB(147, 73, 0));
+    txSetFillColor (RGB(147, 73, 0));
+    POINT Roof [4] {{x,           y - 40*size}, {x + 40*size, y - 40*size},
+                    {x + 20*size, y - 55*size}, {x,           y - 40*size}};
+    txPolygon (Roof, 4);
 }
 /*
 tree1    (100, 500, 2, 2, 5, 15)
