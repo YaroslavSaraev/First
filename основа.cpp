@@ -2,9 +2,13 @@
 
 void tree1    (int x, int y, int size, int widthLine, int nLine, int roundSize1);
 void tree2    (int x, int y, int size, int nLine, int place, int roundSize2);
-void hedgerog (int x, int y, int size, int widthLine, int nose, int back);
+void hedgerog (int x, int y, double size, int widthLine, int nose, int back);
 void apple    (int x, int y, int size, int lSize, int nLine, int shine);
 void house    (int x, int y, int size) ;
+
+int xh = 675;
+int yh = 400;
+int kh = 6;
 
 int main ()
     {
@@ -14,7 +18,7 @@ int main ()
     txRectangle (0, 0, 1000, 600);
 
 //Сцена 1
-    for (int z = 1; z <= 15; z++)
+    for (int z = 1; z <= 16; z++)
         {
         tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
         tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
@@ -22,10 +26,59 @@ int main ()
 
         tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
         tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
-        tree2 (550, 400, 1, 8, -5 * (z % 2), 10);
         tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
 
         house (750, 450, 3);
+
+        hedgerog (xh - kh, yh - kh, 1.5, 1, 0, 5 * (z % 2));
+        xh = xh - kh;
+        yh = yh - kh;
+
+        txSetTextAlign (TA_CENTER);
+        txTextOut      (500, 550, "В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
+
+        txSleep (500);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        }
+
+    for (int z = 1; z <= 16; z++)
+        {
+        tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (750, 450, 3);
+
+        hedgerog (xh + kh, yh, 1.5, 1, 0, 5 * (z % 2));
+        xh = xh + kh;
+
+        txSetTextAlign (TA_CENTER);
+        txTextOut      (500, 550, "В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
+
+        txSleep (500);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        }
+
+    for (int z = 1; z <= 13; z++)
+        {
+        tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (750, 450, 3);
+
+        hedgerog (xh, yh + kh, 1.5, 1, 0, 5 * (z % 2));
+        yh = yh + kh;
 
         txSetTextAlign (TA_CENTER);
         txTextOut      (500, 550, "В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
@@ -37,6 +90,7 @@ int main ()
 
     return 0;
     }
+
 //--------------------------------------------------------------------------
 void tree1 (int x, int y, int size, int widthLine, int nLine, int roundSize1)
     {
@@ -103,7 +157,7 @@ void tree2 (int x, int y, int size, int nLine, int place, int roundSize2)
     txLine (x, y + 45*size, x, y + 75*size);
     }
 //---------------------------------------------------------------
-void hedgerog (int x, int y, int size, int widthLine, int nose, int back)
+void hedgerog (int x, int y, double size, int widthLine, int nose, int back)
 {
     /*
     Параметры:
@@ -197,3 +251,4 @@ tree2    (200, 100, 1, 8, -5, 10)
 hedgerog (5, 200, 2, 1, 0, 5)
 apple    (100, 300, 2, 0, 2, 9)
 */
+
