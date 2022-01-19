@@ -100,7 +100,7 @@ int main ()
 
 //Сцена 2--------------------------------------------------------------------------------------------------------------
 
-    for (int z = 1; z <= 16; z++)
+    for (int z = 1; z <= 15; z++)
         {
         tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
         tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
@@ -119,6 +119,73 @@ int main ()
         txSetTextAlign (TA_CENTER);
         txSetColor     (TX_BLACK);
         txTextOut      (500, 550, "Но вдруг, в лесу стали пропадать яблоки.");
+
+        txSleep (450);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        }
+    for (int z = 1; z <= 7; z++)
+        {
+        tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (750, 450, 3);
+
+        hedgerog (xh , yh , 1.5, 1, 10 * (z % 2), 0);
+
+        txSetTextAlign (TA_CENTER);
+        txSetColor     (TX_BLACK);
+        txTextOut      (500, 550, "Ежик закричал: 'Кто-то ворует мои яблоки! Надо его найти!'");
+
+        txSleep (450);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        }
+    for (int z = 1; z <= 12; z++)
+        {
+        tree1 (300, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (100, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (750, 450, 3);
+
+        hedgerog (xh - kh, yh, 1.5, 1, 10 * (z % 2), 5 * (z % 2));
+        xh = xh - kh;
+
+        txSetTextAlign (TA_CENTER);
+        txSetColor     (TX_BLACK);
+        txTextOut      (500, 550, "Но вдруг, в лесу стали пропадать яблоки.");
+
+        txSleep (450);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        } 
+    for (int z = 1; z <= 12; z++)
+        {
+        hedgerog (xh, yh, 1.5, 1, 10 * (z % 2), 5 * (z % 2));
+
+        tree1 (300 - kh, 300, 2, 2, 10, 3 * (z % 2));
+        tree1 (450 - kh, 100, 2, 2, 10, 3 * (z % 2));
+        tree1 (750 - kh, 130, 2, 2, 10, 3 * (z % 2));
+
+        tree2 (200 - kh, 150, 1, 8, -5 * (z % 2), 10);
+        tree2 (600 - kh, 200, 1, 8, -5 * (z % 2), 10);
+        tree2 (100 - kh, 450, 1, 8, -5 * (z % 2), 10);
+
+        house (750 - kh, 450, 3);
+
+        txSetTextAlign (TA_CENTER);
+        txSetColor     (TX_BLACK);
+        txTextOut      (500, 550, "Наш зверек унюхал след и пошел по нему");
 
         txSleep (450);
         txSetFillColor (TX_WHITE);
