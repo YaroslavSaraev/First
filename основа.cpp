@@ -117,13 +117,7 @@ void SceneTwo ()
         
         for (int i = 1; i <= 15; i++)
         {
-        tree1No (300, 300, 2, 2, 10);
-        tree1No (450, 100, 2, 2, 10);
-        tree1No (750, 130, 2, 2, 10);
-
-        tree2No (200, 150, 1, 8);
-        tree2No (600, 200, 1, 8);
-        tree2No (100, 450, 1, 8);
+        forestNo (i);
 
         house (750, 450, 3);
 
@@ -139,13 +133,7 @@ void SceneTwo ()
         }
     for (int i = 1; i <= 7; i++)
         {
-        tree1No (300, 300, 2, 2, 10);
-        tree1No (450, 100, 2, 2, 10);
-        tree1No (750, 130, 2, 2, 10);
-
-        tree2No (200, 150, 1, 8);
-        tree2No (600, 200, 1, 8);
-        tree2No (100, 450, 1, 8);
+        forestNo (i);
 
         house (750, 450, 3);
 
@@ -159,13 +147,7 @@ void SceneTwo ()
         }
     for (int i = 1; i <= 12; i++)
         {
-        tree1No (300, 300, 2, 2, 10);
-        tree1No (450, 100, 2, 2, 10);
-        tree1No (750, 130, 2, 2, 10);
-
-        tree2No (200, 150, 1, 8);
-        tree2No (600, 200, 1, 8);
-        tree2No (100, 450, 1, 8);
+        forestNo (i);
 
         house (750, 450, 3);
 
