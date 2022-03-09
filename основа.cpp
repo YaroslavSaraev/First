@@ -1,22 +1,24 @@
 #include "TXLib.h"
 
-void tree1      (int x, int y, int size, int widthLine, int nLine, int roundSize1);
-void tree1No    (int x, int y, int size, int widthLine, int nLine);
-void tree2      (int x, int y, int size, int nLine, int place, int roundSize2);
-void tree2No    (int x, int y, int size, int widthLine);
-void hedgerog   (int x, int y, double size, int widthLine, int nose, int back);
-void hedgerog1  (int x, int y, double size, int widthLine, int nose, int back);
-void apple      (int x, int y, int size, int lSize, int nLine, int shine);
-void house      (int x, int y, int size);
-void house1     (int x, int y, int size);
-void cone       (int x, int y, int size);
-void Text       (const char  text);
-void Moving     (int i);
-void forest     (int i);
-void forestNo   ();
-void SceneOne   ();
-void SceneTwo   ();
-void SceneThree ();
+void tree1         (int x, int y, int size, int widthLine, int nLine, int roundSize1);
+void tree1No       (int x, int y, int size, int widthLine, int nLine);
+void tree2         (int x, int y, int size, int nLine, int place, int roundSize2);
+void tree2No       (int x, int y, int size, int widthLine);
+void hedgerog      (int x, int y, double size, int widthLine, int nose, int back);
+void hedgerog1     (int x, int y, double size, int widthLine, int nose, int back);
+void hedgerogGirl  (int x, int y, double size, int widthLine, int nose, int back);
+void hedgerog1Girl (int x, int y, double size, int widthLine, int nose, int back);
+void apple         (int x, int y, int size, int lSize, int nLine, int shine);
+void house         (int x, int y, int size);
+void house1        (int x, int y, int size);
+void cone          (int x, int y, int size);
+void TextToScreen  (const char text[]);
+void Moving        (int position, int x11, int x21, int xHouse1);
+void forest        (int position);
+void forestNo      ();
+void SceneOne      ();
+void SceneTwo      ();
+void SceneThree    ();
 
 int xh = 675;
 int yh = 400;
@@ -30,8 +32,8 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    SceneOne ();
-    SceneTwo ();
+    //SceneOne ();
+    //SceneTwo ();
     SceneThree ();
 
     return 0;
@@ -39,26 +41,26 @@ int main ()
 //--------------------------------------------------------------------------
 void SceneOne ()
 {
-    for (int i = 1; i <= 16; i++)
+    for (int position = 1; position <= 16; position++)
     {
-        forest (i);
+        forest (position);
 
         house (750, 450, 3);
 
-        hedgerog (xh - kh, yh - kh, 1.5, 1, 0, 5 * (i % 2));
+        hedgerog (xh - kh, yh - kh, 1.5, 1, 0, 5 * (position % 2));
         xh = xh - kh;
         yh = yh - kh;
 
-        Text (В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.);
+        TextToScreen ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
 
         txSleep (350);
         txSetFillColor (TX_WHITE);
         txClear();
     }
 
-    for (int i = 1; i <= 15; i++)
+    for (int position = 1; position <= 15; position++)
     {
-        forest (i);
+        forest (position);
 
         house (750, 450, 3);
 
@@ -67,16 +69,16 @@ void SceneOne ()
 
         apple (xh, yh - 23, 1, 0, 2, 5);
 
-        Text ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
+        TextToScreen ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
 
         txSleep (350);
         txSetFillColor (TX_WHITE);
         txClear();
     }
 
-    for (int i = 1; i <= 15; i++)
+    for (int position = 1; position <= 15; position++)
     {
-        forest (i);
+        forest (position);
 
         house (750, 450, 3);
 
@@ -86,7 +88,7 @@ void SceneOne ()
         apple (xh,      yh - 20, 1, 0, 2, 5);
         cone  (xh + 30, yh - 23, 8);
 
-        Text ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
+        TextToScreen ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
 
         txSleep (350);
         txSetFillColor (TX_WHITE);
@@ -97,76 +99,85 @@ void SceneOne ()
 //--------------------------------------------------------------------------
 void SceneTwo ()
 {
-    for (int i = 1; i <= 15; i++)
+    int x11 = 300;
+    int x21 = 200;
+    int xHouse1 = 750;
+
+    for (int position = 1; position <= 15; position++)
     {
         forestNo ();
 
         house (750, 450, 3);
 
-        hedgerog (xh - kh, yh - kh, 1.5, 1, 0, 5 * (i % 2));
+        hedgerog (xh - kh, yh - kh, 1.5, 1, 0, 5 * (position % 2));
         xh = xh - kh;
         yh = yh - kh;
 
-        Text("Но вдруг, в лесу стали пропадать яблоки.");
+        TextToScreen ("Но вдруг, в лесу стали пропадать яблоки.");
 
         txSleep (450);
         txSetFillColor (TX_WHITE);
         txClear();
     }
-    for (int i = 1; i <= 7; i++)
+    for (int position = 1; position <= 7; position++)
     {
         forestNo ();
 
         house (750, 450, 3);
 
-        hedgerog (xh , yh , 1.5, 1, 10 * (i % 2), 0);
+        hedgerog (xh , yh , 1.5, 1, 10 * (position % 2), 0);
 
-        Text ("Ежик закричал: 'Кто-то ворует мои яблоки! Надо его найти!'");
+        TextToScreen ("Ежик закричал: 'Кто-то ворует мои яблоки! Надо его найти!'");
 
         txSleep (350);
         txSetFillColor (TX_WHITE);
         txClear();
     }
-    for (int i = 1; i <= 12; i++)
+    for (int position = 1; position <= 12; position++)
     {
         forestNo ();
 
         house (750, 450, 3);
 
-        hedgerog (xh - kh, yh, 1.5, 1, 10 * (i % 2), 5 * (i % 2));
+        hedgerog (xh - kh, yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
         xh = xh - kh;
 
-        Text ("Наш зверек унюхал след и пошел по нему.");
+        TextToScreen ("Наш зверек унюхал след и пошел по нему.");
 
         txSleep (300);
         txSetFillColor (TX_WHITE);
         txClear();
     }
-    for (int i = 1; i <= 72; i++)
+    for (int position = 1; position <= 68; position++)
         {
-        hedgerog (xh, yh, 1.5, 1, 10 * (i % 2), 5 * (i % 2));
+        hedgerog (xh, yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
 
-        Moving (i);
+        Moving (position, x11, x21, xHouse1);
+        x11 = x11 + k;
+        x21 = x21 + k;
+        xHouse1 = xHouse1 + k;
 
-        Text ("Наш зверек унюхал след и пошел по нему.");
+        TextToScreen ("Наш зверек унюхал след и пошел по нему.");
 
         txSleep (300);
         txSetFillColor (TX_WHITE);
         txClear();
     }
+
 }
 //--------------------------------------------------------------------------
 void SceneThree ()
 {
-    for (int i = 1; i <= 16; i++)
+    for (int position = 1; position <= 16; position++)
     {
-        forest (i);
+        forest (position);
 
-        house (450, 450, 3);
+        house1 (750, 450, 3);
 
-        hedgerog1 (xh, yh, 1.5, 1, 0, 5 * (i % 2));
+        hedgerog1    (486, 280, 1.5, 1, 0, 5 * (position % 2));
+        hedgerogGirl (665, 430, 1.5, 1, 0, 5 * (position % 2));
 
-        Text ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
+        TextToScreen ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
 
         txSleep (350);
         txSetFillColor (TX_WHITE);
@@ -174,78 +185,44 @@ void SceneThree ()
     }
 }
 //-----------------------------------------------------------------------------
-void Moving (int i)
+void Moving (int position, int x11, int x21, int xHouse1)
 {
-    int x11 = 300;
-    int x12 = 450;
-    int x13 = 750;
-    int x14 = -500;
-    int x15 = -350;
-    int x16 = -50;
-
-    int x21 = 200;
-    int x22 = 600;
-    int x23 = 100;
-    int x24 = -600;
-    int x25 = -200;
-    int x26 = -700;
-
-    int xHouse1 = 750;
-    int xHouse2 = -350;
-
     tree1No (x11 + k, 300, 2, 2, 10);
-    tree1No (x12 + k, 100, 2, 2, 10);
-    tree1No (x13 + k, 130, 2, 2, 10);
+    tree1No (x11+150 + k, 100, 2, 2, 10);
+    tree1No (x11+450 + k, 130, 2, 2, 10);
 
-    tree1 (x14 + k, 300, 2, 2, 10, 2 * (i % 2));
-    tree1 (x15 + k, 100, 2, 2, 10, 2 * (i % 2));
-    tree1 (x16 + k, 130, 2, 2, 10, 2 * (i % 2));
+    tree1   (x11-800 + k, 300, 2, 2, 10, 2 * (position % 2));
+    tree1   (x11-650 + k, 100, 2, 2, 10, 2 * (position % 2));
+    tree1   (x11-350 + k, 130, 2, 2, 10, 2 * (position % 2));
 
     tree2No (x21 + k, 150, 1, 8);
-    tree2No (x22 + k, 200, 1, 8);
-    tree2No (x23 + k, 450, 1, 8);
+    tree2No (x21+400 + k, 200, 1, 8);
+    tree2No (x21-100 + k, 450, 1, 8);
 
-    tree2 (x24 + k, 150, 1, 8, -3 * (i % 2), 10);
-    tree2 (x25 + k, 200, 1, 8, -3 * (i % 2), 10);
-    tree2 (x26 + k, 450, 1, 8, -3 * (i % 2), 10);
+    tree2   (x21-800 + k, 150, 1, 8, -3 * (position % 2), 10);
+    tree2   (x21-400 + k, 200, 1, 8, -3 * (position % 2), 10);
+    tree2   (x21-900 + k, 450, 1, 8, -3 * (position % 2), 10);
 
-    house (xHouse1 + k, 450, 3);
-    house (xHouse2 + k, 450, 3);
-
-    x11 = x11 + k;
-    x12 = x12 + k;
-    x13 = x13 + k;
-    x14 = x14 + k;
-    x15 = x15 + k;
-    x16 = x16 + k;
-
-    x21 = x21 + k;
-    x22 = x22 + k;
-    x23 = x23 + k;
-    x24 = x24 + k;
-    x25 = x25 + k;
-    x26 = x26 + k;
-
-    xHouse1 = xHouse1 + k;
-    xHouse2 = xHouse2 + k;
+    house   (xHouse1 + k, 450, 3);
+    house   (xHouse1-820 + k, 450, 3);
 }
 //--------------------------------------------------------------------------
-void Text (const char  Text)
+void TextToScreen (const char text[])
 {
     txSetTextAlign (TA_CENTER);
     txSetColor     (TX_BLACK);
-    txTextOut      (500, 550, Text);
+    txTextOut      (500, 550, text);
 }
 //--------------------------------------------------------------------------
-void forest (int i)
+void forest (int position)
 {
-    tree1 (300, 300, 2, 2, 10, 2 * (i % 2));
-    tree1 (450, 100, 2, 2, 10, 2 * (i % 2));
-    tree1 (750, 130, 2, 2, 10, 2 * (i % 2));
+    tree1 (300, 300, 2, 2, 10, 2 * (position % 2));
+    tree1 (450, 100, 2, 2, 10, 2 * (position % 2));
+    tree1 (750, 130, 2, 2, 10, 2 * (position % 2));
 
-    tree2 (200, 150, 1, 8, -3 * (i % 2), 10);
-    tree2 (600, 200, 1, 8, -3 * (i % 2), 10);
-    tree2 (100, 450, 1, 8, -3 * (i % 2), 10);
+    tree2 (200, 150, 1, 8, -3 * (position % 2), 10);
+    tree2 (600, 200, 1, 8, -3 * (position % 2), 10);
+    tree2 (100, 450, 1, 8, -3 * (position % 2), 10);
 }
 //--------------------------------------------------------------------------
 void forestNo ()
@@ -420,6 +397,69 @@ void hedgerog1 (int x, int y, double size, int widthLine, int nose, int back)
 {
     txSetFillColor (RGB(200, 100, 26));
     txSetColor     (RGB(200, 100, 26), 1);
+    POINT body [7] {{ROUND (x),           ROUND (y)},           {ROUND (x),           ROUND (y - 10*size)},
+                    {ROUND (x + 30*size), ROUND (y - 10*size)}, {ROUND (x + 50*size), ROUND (y + nose)},
+                    {ROUND (x + 30*size), ROUND (y + 10*size)}, {ROUND (x),           ROUND (y + 10*size)},
+                    {ROUND (x),           ROUND (y)}};
+    txPolygon       (body, 7);
+
+    txSetColor (RGB(0, 0, 0), widthLine);
+    txSetFillColor (RGB(0, 0, 0));
+    POINT needle [8] {{ROUND (x),           ROUND (y - 10*size)}, {ROUND (x + 5*size) - back,  ROUND (y - 17*size)},
+                      {ROUND (x + 10*size), ROUND (y - 10*size)}, {ROUND (x + 15*size) - back, ROUND (y - 17*size)},
+                      {ROUND (x + 20*size), ROUND (y - 10*size)}, {ROUND (x + 25*size) - back, ROUND (y - 17*size)},
+                      {ROUND (x + 30*size), ROUND (y - 10*size)}, {ROUND (x),                  ROUND (y - 10*size)}};
+    txPolygon (needle, 8);
+
+    txSetColor     (RGB(0, 0, 0));
+    txSetFillColor (RGB(0, 0, 0));
+    txCircle (x + 30*size, y - 3*size, 4*size);
+    txCircle (x + 50*size,      y + nose,   2*size);
+}
+//-----------------------------------------------------------------------------
+    /*
+    Параметры:
+    x, y - координаты
+    size - размер ежа
+    widthLine -толщина линий
+    nose - наклон носа
+    back - наклон иголок
+    */
+void hedgerogGirl (int x, int y, double size, int widthLine, int nose, int back)
+{
+    txSetFillColor (RGB(200, 100, 90));
+    txSetColor     (RGB(200, 100, 90), 1);
+    POINT body [6] {{ROUND (x),           ROUND (y + nose)},    {ROUND (x + 20*size), ROUND (y - 10*size)},
+                    {ROUND (x + 50*size), ROUND (y - 10*size)}, {ROUND (x + 50*size), ROUND (y + 10*size)},
+                    {ROUND (x + 20*size), ROUND (y + 10*size)}, {ROUND (x),           ROUND (y + nose)}};
+    txPolygon       (body, 6);
+
+    txSetColor (RGB(0, 0, 0), widthLine);
+    txSetFillColor (RGB(0, 0, 0));
+    POINT needle [8] {{ROUND (x + 20*size), ROUND (y - 10*size)}, {ROUND (x + 25*size) + back, ROUND (y - 17*size)},
+                      {ROUND (x + 30*size), ROUND (y - 10*size)}, {ROUND (x + 35*size) + back, ROUND (y - 17*size)},
+                      {ROUND (x + 40*size), ROUND (y - 10*size)}, {ROUND (x + 45*size) + back, ROUND (y - 17*size)},
+                      {ROUND (x + 50*size), ROUND (y - 10*size)}, {ROUND (x + 20*size),        ROUND (y - 10*size)}};
+    txPolygon (needle, 8);
+
+    txSetColor     (RGB(0, 0, 0));
+    txSetFillColor (RGB(0, 0, 0));
+    txCircle (x + 20*size, y - 3*size, 4*size);
+    txCircle (x,           y + nose,   2*size);
+}
+//---------------------------------------------------------------
+    /*
+    Параметры:
+    x, y - координаты
+    size - размер ежа
+    widthLine -толщина линий
+    nose - наклон носа
+    back - наклон иголок
+    */
+void hedgerog1Girl (int x, int y, double size, int widthLine, int nose, int back)
+{
+    txSetFillColor (RGB(200, 100, 90));
+    txSetColor     (RGB(200, 100, 90), 1);
     POINT body [7] {{ROUND (x),           ROUND (y)},           {ROUND (x),           ROUND (y - 10*size)},
                     {ROUND (x + 30*size), ROUND (y - 10*size)}, {ROUND (x + 50*size), ROUND (y + nose)},
                     {ROUND (x + 30*size), ROUND (y + 10*size)}, {ROUND (x),           ROUND (y + 10*size)},
