@@ -19,6 +19,7 @@ void forestNo      ();
 void SceneOne      ();
 void SceneTwo      ();
 void SceneThree    ();
+void END           ();
 
 int xh = 675;
 int yh = 400;
@@ -32,9 +33,10 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    //SceneOne ();
-    //SceneTwo ();
+    SceneOne   ();
+    SceneTwo   ();
     SceneThree ();
+    END        ();
 
     return 0;
 }
@@ -150,12 +152,12 @@ void SceneTwo ()
     }
     for (int position = 1; position <= 68; position++)
         {
-        hedgerog (xh, yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
-
         Moving (position, x11, x21, xHouse1);
         x11 = x11 + k;
         x21 = x21 + k;
         xHouse1 = xHouse1 + k;
+
+        hedgerog (xh, yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
 
         TextToScreen ("Наш зверек унюхал след и пошел по нему.");
 
@@ -168,14 +170,19 @@ void SceneTwo ()
 //--------------------------------------------------------------------------
 void SceneThree ()
 {
-    for (int position = 1; position <= 16; position++)
+    xh = 486;
+    yh = 280;
+    int xgh = 665;
+    int ygh = 430;
+
+    for (int position = 1; position <= 10; position++)
     {
         forest (position);
 
         house1 (750, 450, 3);
 
-        hedgerog1    (486, 280, 1.5, 1, 0, 5 * (position % 2));
-        hedgerogGirl (665, 430, 1.5, 1, 0, 5 * (position % 2));
+        hedgerog1    ( xh,  yh, 1.5, 1, 10 * (position % 2), 0);
+        hedgerogGirl (xgh, ygh, 1.5, 1,                   0, 0);
 
         TextToScreen ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
 
@@ -183,6 +190,98 @@ void SceneThree ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    for (int position = 1; position <= 14; position++)
+    {
+        forest (position);
+
+        house1 (750, 450, 3);
+
+        hedgerog1    (xh + kh, yh + kh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
+        hedgerogGirl (    xgh,     ygh, 1.5, 1,                   0,                  0);
+
+        xh = xh + kh;
+        yh = yh + kh;
+
+        TextToScreen ("Это она воровала яблоки. Но ежата не поругались, а стали дружно жить вместе.");
+
+        txSleep (350);
+        txSetFillColor (TX_WHITE);
+        txClear();
+    }
+    for (int position = 1; position <= 7; position++)
+    {
+        forest (position);
+
+        house1 (750, 450, 3);
+
+        hedgerog1    ( xh, yh + kh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
+        hedgerogGirl (xgh,     ygh, 1.5, 1,                   0,                  0);
+
+        yh = yh + kh;
+
+        TextToScreen ("Это она воровала яблоки. Но ежата не поругались, а стали дружно жить вместе.");
+
+        txSleep (350);
+        txSetFillColor (TX_WHITE);
+        txClear();
+    }
+    for (int position = 1; position <= 10; position++)
+    {
+        forest (position);
+
+        house1 (750, 450, 3);
+
+        hedgerog1    ( xh,  yh, 1.5, 1, 10 * (position % 2), 0);
+        hedgerogGirl (xgh, ygh, 1.5, 1, 10 * (position % 2), 0);
+
+        TextToScreen ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
+
+        txSleep (350);
+        txSetFillColor (TX_WHITE);
+        txClear();
+    }
+    for (int position = 1; position <= 11; position++)
+    {
+        forest (position);
+
+        hedgerog1     ( xh + kh,  yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
+        hedgerog1Girl (xgh + kh, ygh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
+
+        xh  =  xh + kh;
+        xgh = xgh + kh;
+
+        TextToScreen ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
+
+        house1 (750, 450, 3);
+
+        txSleep (350);
+        txSetFillColor (TX_WHITE);
+        txClear();
+    }
+    for (int position = 1; position <= 14; position++)
+    {
+        forest (position);
+
+        hedgerog1     (xh + kh, yh, 1.5, 1, 10 * (position % 2), 5 * (position % 2));
+
+        xh  =  xh + kh;
+
+        TextToScreen ("Но вдруг наш ежик натыкается на ежиху, которая живет в своем домике.");
+
+        house1 (750, 450, 3);
+
+        txSleep (350);
+        txSetFillColor (TX_WHITE);
+        txClear();
+    }
+}
+//-----------------------------------------------------------------------------
+void END ()
+{
+    txSetTextAlign (TA_CENTER);
+    txSetColor     (TX_BLACK);
+    txSelectFont   ("Comic Sans MS", 60, 20, FW_BOLD, false, false, false, 0);
+    txTextOut      (500, 250, "КОНЕЦ");
 }
 //-----------------------------------------------------------------------------
 void Moving (int position, int x11, int x21, int xHouse1)
@@ -203,8 +302,8 @@ void Moving (int position, int x11, int x21, int xHouse1)
     tree2   (x21-400 + k, 200, 1, 8, -3 * (position % 2), 10);
     tree2   (x21-900 + k, 450, 1, 8, -3 * (position % 2), 10);
 
-    house   (xHouse1 + k, 450, 3);
-    house   (xHouse1-820 + k, 450, 3);
+    house    (xHouse1 + k, 450, 3);
+    house1   (xHouse1-820 + k, 450, 3);
 }
 //--------------------------------------------------------------------------
 void TextToScreen (const char text[])
