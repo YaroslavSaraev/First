@@ -34,10 +34,11 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    SceneOne   ();
-    SceneTwo   ();
-    SceneThree ();
-    END        ();
+    txPlaySound ("shum_lesa.wav");
+    SceneOne    ();
+    SceneTwo    ();
+    SceneThree  ();
+    END         ();
 
     return 0;
 }
@@ -317,13 +318,13 @@ void Moving (int position, int x11, int x21, int xHouse1)
 
     tree1   (x11-800 + k, 300, 2, 2, 10, 2 * (position % 2));
     tree1   (x11-650 + k, 100, 2, 2, 10, 2 * (position % 2));
-    tree1   (x11-350 + k, 120, 2, 2, 10, 2 * (position % 2));
+    tree1   (x11-350 + k, 115, 2, 2, 10, 2 * (position % 2));
 
     tree2No (x21     + k, 150, 1, 8);
     tree2No (x21+400 + k, 200, 1, 8);
     tree2No (x21- 50 + k, 450, 1, 8);
 
-    tree2   (x21-800 + k, 150, 1, 8, -3 * (position % 2), 10);
+    tree2   (x21-800 + k, 145, 1, 8, -3 * (position % 2), 10);
     tree2   (x21-400 + k, 190, 1, 8, -3 * (position % 2), 10);
     tree2   (x21-850 + k, 450, 1, 8, -3 * (position % 2), 10);
 
