@@ -12,7 +12,6 @@ int main ()
     txSetFillColor (TX_WHITE);
     txRectangle (0, 0, 1000, 600);
 
-    txPlaySound ("shum_lesa.wav");
     SceneOne    ();
     SceneTwo    ();
     SceneThree  ();
@@ -44,7 +43,7 @@ void SceneOne ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
-
+    txPlaySound ("Padenie.wav");
     for (int position = 1; position <= 15; position++)
     {
         background ();
@@ -64,7 +63,7 @@ void SceneOne ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
-
+    txPlaySound ("Padenie.wav");
     for (int position = 1; position <= 15; position++)
     {
         background ();
@@ -77,7 +76,7 @@ void SceneOne ()
         yh = yh + 7;
 
         apple (xh,      yh - 20, 1, 0, 2, 5);
-        cone  (xh + 30, yh - 23, 8);
+        cone  (xh + 36, yh - 22, 10);
 
         TextToScreen ("В лесу живет ежик. Он обитает в своем домике и ходит в лес за шишками и яблоками.");
 
@@ -96,6 +95,7 @@ void SceneTwo ()
     int x21 = 200;
     int xHouse1 = 750;
 
+    txPlaySound ("shum_lesa.wav");
     for (int position = 1; position <= 15; position++)
     {
         background ();
@@ -114,6 +114,7 @@ void SceneTwo ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("udivlenie.wav");
     for (int position = 1; position <= 7; position++)
     {
         background ();
@@ -130,6 +131,7 @@ void SceneTwo ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("shagi.wav");
     for (int position = 1; position <= 12; position++)
     {
         background ();
@@ -174,6 +176,7 @@ void SceneThree ()
     int xgh = 665;
     int ygh = 430;
 
+    txPlaySound ("wow.wav");
     for (int position = 1; position <= 10; position++)
     {
         background ();
@@ -191,6 +194,7 @@ void SceneThree ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("shum_lesa.wav");
     for (int position = 1; position <= 14; position++)
     {
         background ();
@@ -228,6 +232,7 @@ void SceneThree ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("girl_wow.wav");
     for (int position = 1; position <= 10; position++)
     {
         background ();
@@ -245,6 +250,7 @@ void SceneThree ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("shum_lesa.wav");
     for (int position = 1; position <= 11; position++)
     {
         background ();
@@ -283,4 +289,5 @@ void SceneThree ()
         txSetFillColor (TX_WHITE);
         txClear();
     }
+    txPlaySound ("end.wav");
 }
